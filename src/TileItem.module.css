@@ -1,0 +1,7 @@
+.tile {
+	width: 200px;
+	height: 200px;
+	overflow: hidden; /* hide anything overflowing */
+	border: 1px solid #ccc; /* just for visualization */
+	margin: 5px;
+}
