@@ -1,2 +1,1 @@
-# event-planner-frontend
-Front End for Event Planner repo
+# Event Planner App
