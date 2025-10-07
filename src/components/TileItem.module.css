@@ -1,7 +1,10 @@
 .tile {
-	width: 200px;
-	height: 200px;
+	min-width: 200px;
+	max-width: 300px;
+	max-height: 400px;
 	overflow: hidden; /* hide anything overflowing */
 	border: 1px solid #ccc; /* just for visualization */
 	margin: 5px;
+	text-align: left;
+	padding: 10px;
 }
