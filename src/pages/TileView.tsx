@@ -18,7 +18,6 @@ const TileView = () => {
 	));
 	return (
 		<>
-			<h1>TileView</h1>
 			<div className={styles.tileView}>{events}</div>
 		</>
 	);
