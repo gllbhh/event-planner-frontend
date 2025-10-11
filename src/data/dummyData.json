@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Photography Basics Workshop",
+    "description": "Learn how to capture beautiful photos with your DSLR or smartphone.",
+    "dateTime": { "date": "2025-10-12", "time": "10:00" },
+    "maxParticipants": 12,
+    "isPrivate": false,
+    "attendees": 8
+  },
+  {
+    "id": 2,
+    "title": "Yoga in the Park",
+    "description": "Morning yoga session for all levels.",
+    "dateTime": { "date": "2025-10-15", "time": "08:30" },
+    "maxParticipants": 20,
+    "isPrivate": false,
+    "attendees": 15
+  },
+  {
+    "id": 3,
+    "title": "Board Game Night",
+    "description": "Bring your favorite board games and snacks.",
+    "dateTime": { "date": "2025-10-18", "time": "18:00" },
+    "maxParticipants": 10,
+    "isPrivate": true,
+    "attendees": 7
+  },
+  {
+    "id": 4,
+    "title": "Cooking Class: Italian Pasta",
+    "description": "Hands-on pasta making with a professional chef.",
+    "dateTime": { "date": "2025-10-20", "time": "17:00" },
+    "maxParticipants": 8,
+    "isPrivate": false,
+    "attendees": 6
+  },
+  {
+    "id": 5,
+    "title": "Book Club: October Edition",
+    "description": "Discussing 'The Midnight Library' by Matt Haig.",
+    "dateTime": { "date": "2025-10-22", "time": "19:00" },
+    "maxParticipants": 15,
+    "isPrivate": false,
+    "attendees": 12
+  },
+  {
+    "id": 6,
+    "title": "Tech Meetup: AI Trends",
+    "description": "Talks and networking about the latest in AI.",
+    "dateTime": { "date": "2025-10-25", "time": "14:00" },
+    "maxParticipants": 30,
+    "isPrivate": false,
+    "attendees": 25
+  },
+  {
+    "id": 7,
+    "title": "Art Jam Session",
+    "description": "Open studio for artists to create and collaborate.",
+    "dateTime": { "date": "2025-10-27", "time": "16:00" },
+    "maxParticipants": 18,
+    "isPrivate": true,
+    "attendees": 10
+  },
+  {
+    "id": 8,
+    "title": "Movie Marathon",
+    "description": "Back-to-back screenings of classic comedies.",
+    "dateTime": { "date": "2025-10-29", "time": "20:00" },
+    "maxParticipants": 25,
+    "isPrivate": false,
+    "attendees": 20
+  },
+  {
+    "id": 9,
+    "title": "Gardening Workshop",
+    "description": "Learn how to grow your own herbs and vegetables.",
+    "dateTime": { "date": "2025-11-01", "time": "09:00" },
+    "maxParticipants": 10,
+    "isPrivate": false,
+    "attendees": 7
+  },
+  {
+    "id": 10,
+    "title": "Language Exchange",
+    "description": "Practice English, Spanish, and French with native speakers.",
+    "dateTime": { "date": "2025-11-03", "time": "18:30" },
+    "maxParticipants": 22,
+    "isPrivate": false,
+    "attendees": 16
+  }
+]
