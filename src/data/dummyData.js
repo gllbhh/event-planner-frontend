@@ -1,6 +1,5 @@
-import type { Event } from "../types/types";
-
-export const dummyData: Event[] = [
+// src/data/dummyData.js
+export const dummyData = [
 	{
 		id: 1,
 		title: "Photography Basics Workshop",

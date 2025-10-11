@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import Form from "react-bootstrap/Form";
 import type { Session } from "../types/types";
 
 const CreateEvent = () => {
@@ -29,9 +28,43 @@ const CreateEvent = () => {
 		console.log(newSession);
 	};
 
-	const saveSession = () => {
-		console.log(session);
+
+	const saveSession = async () => {
+		try {
+			// Combine date and time into a single ISO string
+			const dateTime = session.date && session.time
+				? new Date(`${session.date}T${session.time}`).toISOString()
+				: "";
+
+			const payload = {
+				title: session.title,
+				description: session.description,
+				dateTime, // single ISO string
+				maxParticipants: session.maxParticipants,
+				isPrivate: session.isPrivate,
+			};
+
+			const response = await fetch("http://localhost:4000/api/sessions", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(payload),
+			});
+			if (!response.ok) {
+				throw new Error("Failed to create event");
+			}
+			const data = await response.json();
+			console.log("Event created:", data);
+			// Optionally, redirect or show a success message here
+		} catch (error) {
+			console.error(error);
+			// Optionally, show an error message to the user
+		}
 	};
+
+
+
 
 	return (
 		<div className="d-flex flex-column">
