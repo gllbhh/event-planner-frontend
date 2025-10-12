@@ -20,6 +20,14 @@ const EventDetails = () => {
   return (
     <div>
       <h2>{event.title}</h2>
+      <p><strong>Event ID:</strong> {event.id}</p>
+      {event.managementCode && (
+        <p>
+          <strong>Management Code:</strong> <span style={{fontFamily: "monospace"}}>{event.managementCode}</span>
+          <br />
+          <small style={{color: "red"}}>Save this code! You will need it to edit or delete the event.</small>
+        </p>
+      )}
       <p>{event.description}</p>
       <p>
         <strong>Date:</strong> {event.dateTime?.split("T")[0]}

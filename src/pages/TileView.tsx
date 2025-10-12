@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import TileItem from "../components/TileItem";
-import styles from "./TileView.module.css";
-// import { dummyData } from "../data/dummyData.js";
+import styles from "../css/modules/TileView.module.css";
 
 const TileView = () => {
 	// useState variable to hold events
@@ -35,19 +34,7 @@ const TileView = () => {
             id={e.id}
         />
     ));
-	// dummy data mapping
-	// const events = dummyData.map((e) => (
-	// 	<TileItem
-	// 		title={e.title}
-	// 		description={e.description}
-	// 		date={e.date}
-	// 		time={e.time}
-	// 		maxParticipants={e.maxParticipants}
-	// 		isPrivate={e.isPrivate}
-	// 		attendees={e.attendees}
-	// 		key={e.id}
-	// 	/>
-	// ));
+
 	return (
 		<>
 			<div className={styles.tileView}>{eventTiles}</div>

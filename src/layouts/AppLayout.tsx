@@ -4,11 +4,13 @@ import AppNavbar from "../components/AppNavbar";
 
 export default function AppLayout() {
 	return (
-		<>
-			<AppNavbar />
+	<>
+		<AppNavbar />
+		<div className="main-container">
 			<Container className="py-4">
 				<Outlet />
 			</Container>
+		</div>
 		</>
 	);
 }

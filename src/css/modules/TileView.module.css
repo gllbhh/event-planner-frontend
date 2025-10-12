@@ -1,0 +1,7 @@
+.tileView {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start; /* Align tiles to the left */
+	gap: 0;                      /* Remove gap if using margin on tiles */
+}
