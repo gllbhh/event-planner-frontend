@@ -21,7 +21,7 @@ const ManageEvent = () => {
       time: eventFromState?.dateTime?.split("T")[1]?.slice(0, 5) || "",
       maxParticipants: eventFromState?.maxParticipants || 0,
       attendeeCount: eventFromState?.attendeeCount || 0,
-      attendees: eventFromState?.attendances || 0,
+      attendees: eventFromState?.attendances || [],
       attendeeNames: eventFromState?.attendeeNames || [],
       isPrivate: eventFromState?.isPrivate || false, 
       
@@ -115,7 +115,7 @@ const removeAttendee = async (attendanceId: string) => {
       alert("Attendee removed.");
       setSession((prev) => ({
         ...prev,
-        attendees: prev.attendees.filter((a: any) => a.id !== attendanceId),
+        attendees: (prev.attendees ?? []).filter((a: any) => a.id !== attendanceId),
       }));
     } else {
       alert("Failed to remove attendee.");

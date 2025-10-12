@@ -6,7 +6,7 @@ export interface Event {
 	time: string;
 	maxParticipants: number;
 	isPrivate: boolean;
-	attendees?: number;
+	attendees?: AttendeeType[];
 	attendeeCount?: number;
 	attendeeNames?: string[];
 }
