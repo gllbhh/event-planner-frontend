@@ -20,7 +20,7 @@ const TileItem = (props: Event) => {
                 <p>Date: {props.date}</p>
                 <p>Time: {props.time}</p>
                 <p>
-                    Participants: {props.attendees}/{props.maxParticipants}
+                    Participants: {props.attendees || 0}/{props.maxParticipants}
                 </p>
                 <p>This event is {props.isPrivate ? "private" : "public"}</p>
 				</div>

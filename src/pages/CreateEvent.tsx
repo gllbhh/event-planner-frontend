@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import type { Event } from "../types/types";
 import { useNavigate } from "react-router-dom";
+import styles from "../css/modules/CreateEvent.module.css";
+
 
 const CreateEvent = () => {
 
@@ -20,17 +22,21 @@ const CreateEvent = () => {
 
 	const [session, setSession] = useState<Event>(emptySession);
 
-	const updateSession = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const fieldName = e.target.name;
-		const fieldType = e.target.type;
-		const fieldValue =
-			fieldType === "checkbox" ? e.target.checked : fieldType === "number" ? Number(e.target.value) : e.target.value;
-		const newSession = {
-			...session,
-			[fieldName]: fieldValue,
-		};
-		setSession(newSession);
-		console.log(newSession);
+	const updateSessionHandler = (
+	  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+	  const fieldName = e.target.name;
+	  const fieldType = (e.target as HTMLInputElement).type;
+	  const fieldValue =
+		fieldType === "checkbox"
+		  ? (e.target as HTMLInputElement).checked
+		  : fieldType === "number"
+		  ? Number(e.target.value)
+		  : e.target.value;
+	  setSession((prev) => ({
+		...prev,
+		[fieldName]: fieldValue,
+	  }));
 	};
 
 
@@ -74,15 +80,14 @@ const CreateEvent = () => {
 
 
 	return (
-		<div className="d-flex flex-column">
+		<div className="card cheerful-card p-4" style={{ maxWidth: 800, margin: "2rem auto", border: "none" }}>
 			<h1>CreateEvent</h1>
-			<input className="form-control" placeholder="Title" name="title" onChange={updateSession} value={session.title} />
-			<input
+			<input className="form-control" placeholder="Title" name="title" onChange={updateSessionHandler} value={session.title} />
+			<textarea
 				className="form-control"
 				placeholder="Description"
 				name="description"
-				checked={session.isPrivate}
-				onChange={updateSession}
+				onChange={updateSessionHandler}
 				value={session.description}
 			/>
 			<input
@@ -90,20 +95,20 @@ const CreateEvent = () => {
 				placeholder="Maximum Participants"
 				type="number"
 				name="maxParticipants"
-				onChange={updateSession}
+				onChange={updateSessionHandler}
 			/>
 			<div className="mb-3">
 				<label htmlFor="dateInput" className="form-label">
 					Date
 				</label>
-				<input type="date" className="form-control" id="dateInput" name="date" onChange={updateSession} />
+				<input type="date" className="form-control" id="dateInput" name="date" onChange={updateSessionHandler} />
 			</div>
 
 			<div className="mb-3">
 				<label htmlFor="timeInput" className="form-label">
 					Time
 				</label>
-				<input type="time" className="form-control" id="timeInput" step="60" name="time" onChange={updateSession} />
+				<input type="time" className="form-control" id="timeInput" step="60" name="time" onChange={updateSessionHandler} />
 			</div>
 
 			<div className="form-check form-switch">
@@ -117,7 +122,7 @@ const CreateEvent = () => {
 					id="switchCheckDefault"
 					name="isPrivate"
 					checked={session.isPrivate}
-					onChange={updateSession}
+					onChange={updateSessionHandler}
 				/>
 			</div>
 

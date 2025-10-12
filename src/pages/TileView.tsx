@@ -23,7 +23,10 @@ const TileView = () => {
         };
         fetchEvents();
     }, []);
+   
+    console.log("Events:", events);
 
+    // Map events to TileItem components
 	    const eventTiles = events.map((e: any) => (
         <TileItem
             title={e.title}
@@ -32,7 +35,7 @@ const TileView = () => {
             time={e.dateTime ? e.dateTime.split("T")[1]?.slice(0, 5) : ""}
             maxParticipants={e.maxParticipants}
             isPrivate={e.isPrivate}
-            attendees={e.attendees}
+            attendees={e.attendeeCount}
             key={e.id}
             id={e.id}
         />

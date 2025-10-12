@@ -7,4 +7,14 @@ export interface Event {
 	maxParticipants: number;
 	isPrivate: boolean;
 	attendees?: number;
+	attendeeCount?: number;
+	attendeeNames?: string[];
+}
+
+export interface AttendeeType {
+	id: string,
+	sessionId: string,
+	attendeeName: string,
+	attendeeEmail: string,
+	attendanceCode: string,
 }

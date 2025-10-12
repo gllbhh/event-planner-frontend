@@ -18,7 +18,7 @@ const EventDetails = () => {
   if (!event) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="card cheerful-card p-4" style={{ maxWidth: 800, margin: "2rem auto", border: "none" }}>
       <h2>{event.title}</h2>
       <p><strong>Event ID:</strong> {event.id}</p>
       {event.managementCode && (
@@ -36,13 +36,10 @@ const EventDetails = () => {
         <strong>Time:</strong> {event.dateTime?.split("T")[1]?.slice(0, 5)}
       </p>
       <p>
-        <strong>Max Participants:</strong> {event.maxParticipants}
+        <strong>Participants:</strong> {event.attendeeCount} / {event.maxParticipants}
       </p>
       <p>
         <strong>Private:</strong> {event.isPrivate ? "Yes" : "No"}
-      </p>
-      <p>
-        <strong>Attendees:</strong> {event.attendees?.length ?? 0}
       </p>
     </div>
   );

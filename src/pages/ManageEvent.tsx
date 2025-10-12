@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import type { Event } from "../types/types";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
+import styles from "../css/modules/ManageEvent.module.css";
+import AttendeeList from "../components/AttendeeList";
 
 const ManageEvent = () => {
   const navigate = useNavigate();
@@ -12,32 +14,38 @@ const ManageEvent = () => {
   console.log("Management code from state:", managementCode);
   
   const parseEvent: Event = {
-      id: eventFromState?.id || 0,
+      id: eventFromState?.id || "",
       title: eventFromState?.title || "",
       description: eventFromState?.description || "",
       date: eventFromState?.dateTime?.split("T")[0] || "",
       time: eventFromState?.dateTime?.split("T")[1]?.slice(0, 5) || "",
       maxParticipants: eventFromState?.maxParticipants || 0,
+      attendeeCount: eventFromState?.attendeeCount || 0,
+      attendees: eventFromState?.attendances || 0,
+      attendeeNames: eventFromState?.attendeeNames || [],
       isPrivate: eventFromState?.isPrivate || false, 
+      
     }
     
     const [session, setSession] = useState<Event>(parseEvent);
     console.log("Event from page:", session);
     
-    const updateSessionHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const fieldName = e.target.name;
-    const fieldType = e.target.type;
-    const fieldValue =
-      fieldType === "checkbox"
-        ? e.target.checked
-        : fieldType === "number"
-        ? Number(e.target.value)
-        : e.target.value;
-    setSession((prev) => ({
-      ...prev,
-      [fieldName]: fieldValue,
-    }));
-  };
+    const updateSessionHandler = (
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+      const fieldName = e.target.name;
+      const fieldType = (e.target as HTMLInputElement).type;
+      const fieldValue =
+        fieldType === "checkbox"
+          ? (e.target as HTMLInputElement).checked
+          : fieldType === "number"
+          ? Number(e.target.value)
+          : e.target.value;
+      setSession((prev) => ({
+        ...prev,
+        [fieldName]: fieldValue,
+      }));
+    };
 
   const saveSession = async () => {
     try {
@@ -69,7 +77,7 @@ const ManageEvent = () => {
         return;
       }
       const data = await response.json();
-      navigate(`/event/${data.id}`);
+      navigate(`/create/event/${data.id}`);
     } catch (error) {
       console.error(error);
     }
@@ -94,10 +102,33 @@ const ManageEvent = () => {
     }
   };
 
+const removeAttendee = async (attendanceId: string) => {
+  if (!attendanceId) return;
+  const confirmed = window.confirm("Are you sure you want to remove this attendee?");
+  if (!confirmed) return;
+  try {
+    const response = await fetch(
+      `http://localhost:4000/api/sessions/${session.id}/attendance/${attendanceId}?managementCode=${managementCode}`,
+      { method: "DELETE" }
+    );
+    if (response.ok) {
+      alert("Attendee removed.");
+      setSession((prev) => ({
+        ...prev,
+        attendees: prev.attendees.filter((a: any) => a.id !== attendanceId),
+      }));
+    } else {
+      alert("Failed to remove attendee.");
+    }
+  } catch (error) {
+    alert("Failed to remove attendee.");
+  }
+};  
+
   if (!session.title && !session.description) return <div>Loading...</div>;
 
   return (
-    <div className="d-flex flex-column">
+    <div className="card cheerful-card p-4" style={{ maxWidth: 800, margin: "2rem auto", border: "none" }}>
       <h1>Manage Event</h1>
       <input
         className="form-control"
@@ -106,8 +137,8 @@ const ManageEvent = () => {
         onChange={updateSessionHandler}
         value={session.title}
       />
-      <input
-        className="form-control"
+      <textarea
+        className={`form-control ${styles.descriptionBox}`}
         placeholder="Description"
         name="description"
         onChange={updateSessionHandler}
@@ -150,7 +181,7 @@ const ManageEvent = () => {
         />
       </div>
 
-      <div className="form-check form-switch">
+      <div className="form-check form-switch mb-3">
         <label className="form-check-label" htmlFor="switchCheckDefault">
           {session.isPrivate ? "Private" : "Public"}
         </label>
@@ -164,7 +195,14 @@ const ManageEvent = () => {
           onChange={updateSessionHandler}
         />
       </div>
-
+      <div>
+        <h4>Participants</h4>
+        <p>{session.attendeeCount ?? 0} / {session.maxParticipants}
+      </p>
+      </div>
+      <div>
+         <AttendeeList attendees={session.attendees || []} handleDelete={removeAttendee}/>  
+      </div>
       <button type="button" className="btn btn-primary" onClick={saveSession}>
         Update Event
       </button>
