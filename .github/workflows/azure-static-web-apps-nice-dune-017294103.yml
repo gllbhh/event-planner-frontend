@@ -34,6 +34,11 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "dist" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+      - name: Install Dependencies and Build
+        run: |
+          npm install
+          npm run build
+          npm run preview
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
