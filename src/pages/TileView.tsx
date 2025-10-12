@@ -32,6 +32,7 @@ const TileView = () => {
             isPrivate={e.isPrivate}
             attendees={e.attendees}
             key={e.id}
+            id={e.id}
         />
     ));
 	// dummy data mapping

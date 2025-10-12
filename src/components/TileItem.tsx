@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./TileItem.module.css";
-import type { Session } from "../types/types";
+import type { Event } from "../types/types";
 
-const TileItem = (props: Session) => {
+const TileItem = (props: Event) => {
 	return (
 		<div className={styles.tile}>
 			<h3>{props.title}</h3>

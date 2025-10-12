@@ -1,9 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import type { Session } from "../types/types";
+import type { Event } from "../types/types";
+import { useNavigate } from "react-router-dom";
 
 const CreateEvent = () => {
-	const emptySession: Session = {
+
+	const navigate = useNavigate();
+
+	
+	const emptySession: Event = {
 		id: 0,
 		title: "",
 		description: "",
@@ -13,7 +18,7 @@ const CreateEvent = () => {
 		isPrivate: false,
 	};
 
-	const [session, setSession] = useState<Session>(emptySession);
+	const [session, setSession] = useState<Event>(emptySession);
 
 	const updateSession = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const fieldName = e.target.name;
@@ -56,6 +61,7 @@ const CreateEvent = () => {
 			}
 			const data = await response.json();
 			console.log("Event created:", data);
+			navigate(`/event/${data.id}`);
 			// Optionally, redirect or show a success message here
 		} catch (error) {
 			console.error(error);

@@ -3,6 +3,7 @@ import AppLayout from "../layouts/AppLayout";
 import TileView from "../pages/TileView";
 import CreateEvent from "../pages/CreateEvent";
 import NotFound from "../pages/NotFound";
+import EventDetails from "../pages/EventDetails";
 
 export const router = createBrowserRouter([
 	{
@@ -10,6 +11,7 @@ export const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <TileView /> }, // default route "/"
 			{ path: "create", element: <CreateEvent /> },
+			{ path: "event/:id", element: <EventDetails /> },
 			{ path: "*", element: <NotFound /> },
 		],
 	},
