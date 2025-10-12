@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from "react";
 import TileItem from "../components/TileItem";
 import styles from "../css/modules/TileView.module.css";
+import { useNavigate } from "react-router-dom";
+import type { Event } from "../types/types";
+
 
 const TileView = () => {
 	// useState variable to hold events

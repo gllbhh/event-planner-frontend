@@ -1,11 +1,18 @@
 import React from "react";
 import styles from "../css/modules/TileItem.module.css";
 import type { Event } from "../types/types";
+import { useNavigate } from "react-router-dom";
 
 const TileItem = (props: Event) => {
+
+		const navigate = useNavigate();
+	
+		const handleClick = () => {
+			navigate(`/event/${props.id}`);
+		};
     return (
         <div
-            className={`card cheerful-card shadow-lg ${styles.tile} d-flex flex-column align-items-start justify-content-between`}
+            className={`card cheerful-card shadow-lg ${styles.tile} d-flex flex-column align-items-start justify-content-between`} onClick={handleClick} style={{ cursor: "pointer" }}
         >
             <div className="card-body w-100">
                 <h3 className="card-title">{props.title}</h3>

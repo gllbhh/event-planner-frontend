@@ -57,11 +57,12 @@ const CreateEvent = () => {
 				body: JSON.stringify(payload),
 			});
 			if (!response.ok) {
-				throw new Error("Failed to create event");
+				navigate("/create/fail");
+  				return;
 			}
 			const data = await response.json();
 			console.log("Event created:", data);
-			navigate(`/event/${data.id}`);
+			navigate(`event/${data.id}`);
 			// Optionally, redirect or show a success message here
 		} catch (error) {
 			console.error(error);
