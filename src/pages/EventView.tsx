@@ -16,7 +16,7 @@ const EventView = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const fetchEvent = async () => {
-      const res = await fetch(`http://localhost:4000/api/sessions/${id}`);
+      const res = await fetch(`https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions/${id}`);
       if (res.ok) {
         console.log("Fetched event:", await res.clone().json());
         setEvent(await res.json());
@@ -47,7 +47,7 @@ const EventView = () => {
       setJoinStatus("Please enter your name and email.");
       return;
     }
-    const res = await fetch(`http://localhost:4000/api/sessions/${id}/attend`, {
+    const res = await fetch(`https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions/${id}/attend`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ attendeeName: name, attendeeEmail: email }),
@@ -78,7 +78,7 @@ const EventView = () => {
       setCancelStatus("Please enter your attendance code.");
       return;
     }
-    const res = await fetch(`http://localhost:4000/api/sessions/attendance/${personalAttendanceCode.trim()}`, {
+    const res = await fetch(`https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions/attendance/${personalAttendanceCode.trim()}`, {
       method: "DELETE",
     });
     if (res.ok) {
@@ -90,7 +90,7 @@ const EventView = () => {
   }
 
   const updateEventData = async () => {
-          const updatedRes = await fetch(`http://localhost:4000/api/sessions/${id}`);
+          const updatedRes = await fetch(`https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions/${id}`);
       if (updatedRes.ok) {
         setEvent(await updatedRes.json());
       }

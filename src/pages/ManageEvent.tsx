@@ -63,7 +63,7 @@ const ManageEvent = () => {
       };
 
       const response = await fetch(
-        `http://localhost:4000/api/sessions/${session.id}?managementCode=${managementCode}`,
+        `https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions/${session.id}?managementCode=${managementCode}`,
         {
           method: "PATCH",
           headers: {
@@ -87,7 +87,7 @@ const ManageEvent = () => {
     if (window.confirm("Are you sure you want to delete this event?")) {
       try {
         const response = await fetch(
-          `http://localhost:4000/api/sessions/${session.id}?managementCode=${managementCode}`,
+          `https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions/${session.id}?managementCode=${managementCode}`,
           { method: "DELETE" }
         );
         if (response.ok) {
@@ -108,7 +108,7 @@ const removeAttendee = async (attendanceId: string) => {
   if (!confirmed) return;
   try {
     const response = await fetch(
-      `http://localhost:4000/api/sessions/${session.id}/attendance/${attendanceId}?managementCode=${managementCode}`,
+      `https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions/${session.id}/attendance/${attendanceId}?managementCode=${managementCode}`,
       { method: "DELETE" }
     );
     if (response.ok) {

@@ -7,7 +7,7 @@ const EventDetails = () => {
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const res = await fetch(`http://localhost:4000/api/sessions/${id}`);
+      const res = await fetch(`https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions/${id}`);
       if (res.ok) {
         setEvent(await res.json());
       }

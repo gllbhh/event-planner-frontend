@@ -1,6 +1,6 @@
 // src/scripts/injectDummyData.cjs
 const dummyData = require("../data/dummyData.json");
-const API_URL = process.env.API_URL ?? "http://localhost:4000/api/sessions";
+const API_URL = process.env.API_URL ?? "https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions";
 
 function toIsoDateTime(e) {
   const dt = e?.dateTime;

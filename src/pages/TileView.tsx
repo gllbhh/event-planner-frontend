@@ -13,7 +13,7 @@ const TileView = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch("http://localhost:4000/api/sessions"); // Update URL to your backend
+                const response = await fetch("https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions"); // Update URL to your backend
                 if (!response.ok) throw new Error("Failed to fetch events");
                 const data = await response.json();
                 setEvents(data);

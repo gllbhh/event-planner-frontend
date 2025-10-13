@@ -55,7 +55,7 @@ const CreateEvent = () => {
 				isPrivate: session.isPrivate,
 			};
 
-			const response = await fetch("http://localhost:4000/api/sessions", {
+			const response = await fetch("https://event-planner-api-d4g6g2acakabbfdu.northeurope-01.azurewebsites.net/api/sessions", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
