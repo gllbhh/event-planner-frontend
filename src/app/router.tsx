@@ -7,6 +7,8 @@ import EventDetails from "../pages/EventDetails";
 import FailedToCreateEvent from "../pages/FailedToCreateEvent";
 import EventView from "../pages/EventView";
 import ManageEvent from "../pages/ManageEvent";
+import SessionNotFound from "../pages/SessionNotFound";
+import SessionNotFoundNotFound from "../pages/SessionNotFound";
 
 export const router = createBrowserRouter([
 	{
@@ -19,6 +21,7 @@ export const router = createBrowserRouter([
 			{ path: "event/:id", element: <EventView /> },
 			{ path: "manage", element: <ManageEvent /> },
 			{ path: "*", element: <NotFound /> },
+			{ path: "/not-found", element: <SessionNotFoundNotFound /> },
 		],
 	},
 ]);

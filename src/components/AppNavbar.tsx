@@ -15,6 +15,8 @@ export default function AppNavbar() {
 	const handleSearch = () => {
 		if (searchId.trim()) {
 			navigate(`/event/${searchId.trim()}`);
+		} else {
+			navigate("/not-found");
 		}
 	};	
 	return (
