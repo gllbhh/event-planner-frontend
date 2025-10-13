@@ -35,7 +35,7 @@ const TileView = () => {
             time={e.dateTime ? e.dateTime.split("T")[1]?.slice(0, 5) : ""}
             maxParticipants={e.maxParticipants}
             isPrivate={e.isPrivate}
-            attendees={e.attendeeCount}
+            attendeeCount={e.attendeeCount}
             key={e.id}
             id={e.id}
         />
